@@ -40,7 +40,7 @@ def get_fremont_data(filename='fremont-bridge.csv',url=URL,force_download=False)
     # Read the data into a dataframe    
     data = pd.read_csv('fremont-bridge.csv',index_col='Date')
     
-    date_format = '%m/%d/%Y %H:%M:%S %p'
+    date_format = '%m/%d/%Y %I:%M:%S %p'
     
     try:
         data.index = pd.to_datetime(data.index,format=date_format)
