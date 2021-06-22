@@ -38,7 +38,15 @@ def get_fremont_data(filename='fremont-bridge.csv',url=URL,force_download=False)
         urlretrieve(URL,filename)
         
     # Read the data into a dataframe    
-    data = pd.read_csv('fremont-bridge.csv',index_col='Date',parse_dates=True)
+    data = pd.read_csv('fremont-bridge.csv',index_col='Date')
+    
+    date_format = '%m/%d/%Y %H:%M:%S %p'
+    
+    try:
+        data.index = pd.to_datetime(data.index,format=date_format)
+    except:
+        data.index = pd.to_datetime(data.index)
+
     
     # The columns are bit long so we can make them shorter
     data.columns = ['Total','East Sidewalk','West Sidewalk']
