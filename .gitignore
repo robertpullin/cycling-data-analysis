@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Downloaded CSV data
-.csv
+*.csv
